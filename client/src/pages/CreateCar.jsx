@@ -104,9 +104,14 @@ const CreateCar = () => {
                     <label>
                         Wheels
                         <select name="wheels" value={form.wheels} onChange={handleChange}>
-                            {Object.entries(WHEEL_PRICES).map(([w, p]) => (
-                                <option key={w} value={w}>{w} {p > 0 ? `(+$${p.toLocaleString()})` : '(included)'}</option>
-                            ))}
+                            {Object.entries(WHEEL_PRICES).map(([w, p]) => {
+                                const incompatible = w === 'Off-Road' && (form.engine === 'Sport (3.0L)' || form.engine === 'Performance (4.0L)')
+                                return (
+                                    <option key={w} value={w} disabled={incompatible}>
+                                        {w} {p > 0 ? `(+$${p.toLocaleString()})` : '(included)'}{incompatible ? ' — incompatible with current engine' : ''}
+                                    </option>
+                                )
+                            })}
                         </select>
                     </label>
 
@@ -122,9 +127,14 @@ const CreateCar = () => {
                     <label>
                         Engine
                         <select name="engine" value={form.engine} onChange={handleChange}>
-                            {Object.entries(ENGINE_PRICES).map(([eng, p]) => (
-                                <option key={eng} value={eng}>{eng} {p > 0 ? `(+$${p.toLocaleString()})` : '(included)'}</option>
-                            ))}
+                            {Object.entries(ENGINE_PRICES).map(([eng, p]) => {
+                                const incompatible = form.wheels === 'Off-Road' && (eng === 'Sport (3.0L)' || eng === 'Performance (4.0L)')
+                                return (
+                                    <option key={eng} value={eng} disabled={incompatible}>
+                                        {eng} {p > 0 ? `(+$${p.toLocaleString()})` : '(included)'}{incompatible ? ' — incompatible with Off-Road wheels' : ''}
+                                    </option>
+                                )
+                            })}
                         </select>
                     </label>
 
