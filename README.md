@@ -46,9 +46,11 @@ The following **required** functionality is completed:
 
 Here's a walkthrough of the implemented features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='walkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [Kap](https://getkap.co/) for macOS
+📺 [Watch full demo on YouTube](https://youtu.be/bKlh462ZQNE)
+
+GIF created with Playwright + ffmpeg
 
 ---
 
